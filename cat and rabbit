@@ -1,0 +1,30 @@
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import matplotlib.pyplot as plt
+import cv2 
+import os 
+from random import shuffle 
+from tqdm import tqdm 
+from PIL import Image
+# Input data files are available in the "../input/" directory.
+# For example, running this (by clicking run or pressing Shift+Enter) will list the files in the input directory
+import warnings
+warnings.filterwarnings('ignore')
+import os
+print(os.listdir("../input"))
+# -------- Dataset link : https://www.kaggle.com/datasets/muniryadi/cat-vs-rabbit
+validation_cats = "../input/cat-vs-rabbit/val-cat-rabbit/cat"
+validation_rabbits = "../input/cat-vs-rabbit/val-cat-rabbit/rabbit"
+train_cats = "../input/cat-vs-rabbit/train-cat-rabbit/cat"
+train_rabbits = "../input/cat-vs-rabbit/train-cat-rabbit/rabbit"
+
+image_size = 64
+
+X1 = []
+X2 = []
+X3 = []
+X4 = []
+
+for image in tqdm(os.listdir(validation_cats)):
+    p = os.path.join(validation_cats, image)
+    img = cv2.imread(p, cv2.IMREAD_GRAYSCALE) 
